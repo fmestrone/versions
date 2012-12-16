@@ -14,6 +14,19 @@ session_start();
 
 $PLUGIN_ID = $_SESSION['PluginID'];
 
+if ( !empty($PLUGIN_ID) ) {
+    $filename = "data/$PLUGIN_ID";
+    if ( is_readable($filename) ) {
+        $raw = file_get_contents($filename);
+        $PLUGIN = unserialize($raw);
+        if ( empty($PLUGIN) ) {
+            $_SESSION['PluginErr'] = 'invalid';
+            header('Location: index.php');
+            exit;
+        }
+    }
+}
+
 /**
  * http://pkarl.com/articles/contextual-user-friendly-time-and-dates-php/
  * @param $small_ts

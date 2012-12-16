@@ -66,54 +66,61 @@ function contextualTime($small_ts, $large_ts = false) {
 
         <div id="plugins-table">
             <h2 class="form-signin-heading">Registered plugins</h2>
-        <?php
-        $found = false;
-        if ( $handle = opendir('data') ) {
-            while ( false !== ($entry = readdir($handle)) ) {
-                if ( $entry != '.' && $entry != '.' && is_file("data/$entry") && is_readable("data/$entry") ) {
-                    $raw = file_get_contents("data/$entry");
-                    if ( ($data = unserialize($raw)) ) {
-                        if ( !$found ) {
-                            $found = true;
-                            echo '<table class="table table-striped">';
-                            echo '<thead>';
-                            echo '<tr><th>';
-                            echo 'Plugin ID';
-                            echo '</th><th>';
-                            echo 'Version';
-                            echo '</th><th>';
-                            echo 'URL <small>(first 50 chars)</small>';
-                            echo '</th><th>';
-                            echo 'Release';
-                            echo '</th></tr>';
-                            echo '</thead>';
+            <?php
+            $found = false;
+            if ( $handle = opendir('data') ) {
+                while ( false !== ($entry = readdir($handle)) ) {
+                    if ( $entry != '.' && $entry != '.' && is_file("data/$entry") && is_readable("data/$entry") ) {
+                        $raw = file_get_contents("data/$entry");
+                        if ( ($data = unserialize($raw)) ) {
+                            if ( !$found ) {
+                                $found = true;
+                                echo '<table class="table table-hover">';
+                                echo '<thead>';
+                                echo '<tr><th>';
+                                echo 'Plugin ID';
+                                echo '</th><th>';
+                                echo 'Version';
+                                echo '</th><th>';
+                                echo 'URL <small>(first 50 chars)</small>';
+                                echo '</th><th>';
+                                echo 'Release';
+                                echo '</th></tr>';
+                                echo '</thead>';
+                            }
+                            echo '<tr><td>';
+                            echo $entry;
+                            echo '</td><td>';
+                            if ( empty($data['plugin_new_version']) ) {
+                                echo '<span rel="tooltip" data-placement="bottom" title="The author of this plugin has not registered any released versions yet."><i class="icon-ban-circle"></i></span>';
+                            } else {
+                                echo $data['plugin_new_version'];
+                            }
+                            echo "</td><td><a href=\"$data[plugin_url]\" target=\"_blank\">";
+                            echo substr($data['plugin_url'], 0, 50);
+                            echo '</a></td><td>';
+                            if ( empty($data['plugin_timestamp']) ) {
+                                echo '<span rel="tooltip" data-placement="bottom" title="The author of this plugin has not registered any released versions yet."><i class="icon-ban-circle"></i></span>';
+                            } else {
+                                echo contextualTime($data['plugin_timestamp']);
+                            }
+                            echo '</td></tr>';
                         }
-                        echo '<tr><td>';
-                        echo $entry;
-                        echo '</td><td>';
-                        echo $data['plugin_new_version'];
-                        echo "</td><td><a href=\"$data[plugin_url]\" target=\"_blank\">";
-                        echo substr($data['plugin_url'], 0, 50);
-                        echo '</a></td><td>';
-                        echo contextualTime($data['plugin_timestamp']);
-                        echo '</td></tr>';
                     }
                 }
+                closedir($handle);
+                if ( $found ) {
+                    echo '</table>';
+                }
             }
-            closedir($handle);
-            if ( $found ) {
-                echo '</table>';
-            }
-        }
-        ?>
+            ?>
+            <?php if ( !$found ) { ?>
+                <div class="alert alert-info">
+                    <h4>No Registered Plugins</h4>
+                    There are no plugins that use Version Check with this Versions Server at the moment
+                </div>
+            <?php } ?>
         </div>
-
-        <?php if ( !$found ) { ?>
-            <div class="alert alert-info">
-                <h4>No Registered Plugins</h4>
-                There are no plugins that use Version Check with this Versions Server at the moment
-            </div>
-        <?php } ?>
 
         <!--/ Page Content -->
     </div>

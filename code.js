@@ -7,6 +7,7 @@
  */
 
 $(function() {
+    $("span[rel=tooltip]").tooltip();
     $('#registerModal').on('show', function() {
         $("#formRegisterProgress").hide();
         $("#serverRegisterErrorAlert").hide();

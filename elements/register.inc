@@ -27,7 +27,11 @@
         </div>
         <form id="profileForm" action="register.php" method="post" class="form-horizontal">
             <div class="control-group">
-                <label class="control-label" for="pluginid">Plugin ID</label>
+                <label class="control-label" for="pluginid">Plugin ID
+                    <span rel="tooltip" data-placement="bottom" title="The Plugin ID is the name of the folder where your plugin is installed under Elgg. It is also used as the username to sign in to the Versions Server.">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-folder-open"></i></span>
@@ -36,7 +40,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="password">Password</label>
+                <label class="control-label" for="password">Password <i class="icon-question-sign"></i></label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-eye-close"></i></span>
@@ -57,7 +61,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="email">Email Address</label>
+                <label class="control-label" for="email">Email Address <i class="icon-question-sign"></i></label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-envelope"></i></span>
@@ -66,7 +70,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="url">Plugin URL</label>
+                <label class="control-label" for="url">Plugin URL <i class="icon-question-sign"></i></label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-globe"></i></span>

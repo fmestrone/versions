@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+
+#RewriteBase /
+
+RewriteRule ^download\/([A-Za-z0-9\_\-]+)\/?$ download.php?$1
+
+RewriteRule ^lastest\/([A-Za-z0-9\_\-]+)\/?$ index.php?$1
+
+</IfModule>

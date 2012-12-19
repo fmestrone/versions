@@ -39,6 +39,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $pluginid = $_POST['pluginid'];
     $version = $_POST['version'];
     $guid = $_POST['guid'];
+	$date = $_POST['date'];
     $notes = $_POST['notes'];
     if ( $PLUGIN_ID != $pluginid ) {
         $error_message = '<li>Your request is inconsistent with the current session</li>';
@@ -47,7 +48,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     } else {
         $PLUGIN['plugin_new_version'] = $version;
         $PLUGIN['plugin_guid'] = $guid;
-        $PLUGIN['plugin_timestamp'] = time();
+	    if ( $date ) {
+		    $dt = date_create_from_format('Y-m-d', $date);
+		    if ( $dt ) {
+			    $time = $dt->getTimestamp();
+		    }
+	    }
+	    if ( !$time ) {
+		    $time = time();
+	    }
+        $PLUGIN['plugin_timestamp'] = $time;
         if ( !empty($notes) ) $PLUGIN['release_notes'] = $notes;
         $raw = serialize($PLUGIN);
         if ( file_put_contents("data/$PLUGIN_ID", $raw) ) {
@@ -93,7 +103,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="version">Plugin Version</label>
+                    <label class="control-label" for="version">Plugin Version
+	                    <span rel="tooltip" data-placement="bottom" title="The version number of the latest release of your plugin.">
+	                        <i class="icon-question-sign"></i>
+	                    </span>
+                    </label>
                     <div class="controls">
                         <div class="input-prepend">
                             <span class="add-on"><i class="icon-tags"></i></span>
@@ -102,7 +116,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="guid">Elgg Download GUID</label>
+                    <label class="control-label" for="guid">Elgg Download GUID
+	                    <span rel="tooltip" data-placement="bottom" title="The GUID of the download link for your plugin on the Elgg community website.">
+	                        <i class="icon-question-sign"></i>
+	                    </span>
+                    </label>
                     <div class="controls">
                         <div class="input-prepend">
                             <span class="add-on"><i class="icon-download-alt"></i></span>
@@ -110,8 +128,26 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                         </div>
                     </div>
                 </div>
+	            <div class="control-group">
+		            <label class="control-label" for="date">Release Date
+	                    <span rel="tooltip" data-placement="bottom" title="The date when the version was released (leave empty for current date).">
+	                        <i class="icon-question-sign"></i>
+	                    </span>
+		            </label>
+		            <div class="controls">
+			            <div class="input-prepend">
+				            <span class="add-on"><i class="icon-calendar"></i></span>
+				            <input type="text" name="date" value="<?php if ( $PLUGIN['plugin_timestamp'] ) echo date('Y-m-d', $PLUGIN['plugin_timestamp']); ?>" id="release-date" placeholder="Release Date">
+				            <span class="help-block">Leave blank for today's date</span>
+			            </div>
+		            </div>
+	            </div>
                 <div class="control-group">
-                    <label class="control-label" for="notes">Release Notes</label>
+                    <label class="control-label" for="notes">Release Notes
+	                    <span rel="tooltip" data-placement="bottom" title="A short description of the new features and/or fixes this version provides.">
+	                        <i class="icon-question-sign"></i>
+	                    </span>
+                    </label>
                     <div class="controls">
                         <div class="input-prepend">
                             <span class="add-on"><i class="icon-edit"></i></span>

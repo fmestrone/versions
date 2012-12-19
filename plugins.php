@@ -116,6 +116,9 @@ function contextualTime($small_ts, $large_ts = false) {
                                 echo '<span rel="tooltip" data-placement="bottom" title="The author of this plugin has not registered any released versions yet."><i class="icon-ban-circle"></i></span>';
                             } else {
                                 echo contextualTime($data['plugin_timestamp']);
+	                            echo '<span rel="tooltip" data-placement="bottom" title="';
+	                            echo date('D d M Y',$data['plugin_timestamp']);
+	                            echo '"> <i class="icon-calendar"></i></span>';
                             }
                             echo '</td></tr>';
                         }

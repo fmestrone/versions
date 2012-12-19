@@ -15,9 +15,11 @@
 <meta name="author" content="Federico Mestrone">
 <meta name="copyright" content="2012, Moodsdesign Ltd">
 
-<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="style.css" rel="stylesheet" media="screen">
+<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="vendors/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" media="screen" />
+<link href="style.css" rel="stylesheet" media="screen" />
 
 <script src="vendors/jquery-1.8.3.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendors/jquery-ui-1.9.2.custom/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="code.js"></script>

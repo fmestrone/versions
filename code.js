@@ -8,6 +8,7 @@
 
 $(function() {
     $("span[rel=tooltip]").tooltip();
+    $("#release-date").datepicker({ dateFormat: "yy-mm-dd", maxDate: "+1d" });
     $('#registerModal').on('show', function() {
         $("#formRegisterProgress").hide();
         $("#serverRegisterErrorAlert").hide();

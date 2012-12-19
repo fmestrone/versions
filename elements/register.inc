@@ -40,7 +40,11 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="password">Password <i class="icon-question-sign"></i></label>
+                <label class="control-label" for="password">Password
+                    <span rel="tooltip" data-placement="bottom" title="The password you want to use together with the Plugin ID to sign into the Versions Server.">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-eye-close"></i></span>
@@ -61,7 +65,11 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="email">Email Address <i class="icon-question-sign"></i></label>
+                <label class="control-label" for="email">Email Address
+                    <span rel="tooltip" data-placement="bottom" title="The email address we can use to confirm that you are the genuine author of the plugin.">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-envelope"></i></span>
@@ -70,7 +78,11 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="url">Plugin URL <i class="icon-question-sign"></i></label>
+                <label class="control-label" for="url">Plugin URL
+                    <span rel="tooltip" data-placement="top" title="The URL of the homepage of your plugin. It is displayed in the list of registered plugins.">
+                        <i class="icon-question-sign"></i>
+                    </span>
+                </label>
                 <div class="controls">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-globe"></i></span>

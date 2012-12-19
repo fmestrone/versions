@@ -134,7 +134,7 @@ if ( ($pluginid = $_SERVER['QUERY_STRING']) ) {
 <!--/ About Modal -->
 
 <!-- Help Modal -->
-<?php require('elements/help.inc'); ?>
+<?php require('elements/help-signin.inc'); ?>
 <!--/ Help Modal -->
 
 <!-- Register Modal -->

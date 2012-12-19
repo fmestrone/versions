@@ -160,7 +160,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 <!--/ About Modal -->
 
 <!-- Help Modal -->
-<?php require('elements/help.inc'); ?>
+<?php require('elements/help-manage.inc'); ?>
 <!--/ Help Modal -->
 
 <!-- Register Modal -->

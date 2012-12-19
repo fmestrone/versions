@@ -146,10 +146,6 @@ function contextualTime($small_ts, $large_ts = false) {
 <?php require('elements/about.inc'); ?>
 <!--/ About Modal -->
 
-<!-- Help Modal -->
-<?php require('elements/help.inc'); ?>
-<!--/ Help Modal -->
-
 <!-- Register Modal -->
 <?php require('elements/register.inc'); ?>
 <!--/ Register Modal -->

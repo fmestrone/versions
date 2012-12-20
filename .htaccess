@@ -4,8 +4,8 @@ RewriteEngine on
 
 #RewriteBase /
 
-RewriteRule ^download\/([A-Za-z0-9\_\-]+)\/?$ download.php?$1
+RewriteRule ^latest\/([A-Za-z0-9\_\-]+)(?:\/download)?\/?$ download.php?$1
 
-RewriteRule ^lastest\/([A-Za-z0-9\_\-]+)\/?$ index.php?$1
+RewriteRule ^latest\/([A-Za-z0-9\_\-]+)\/info\/?$ index.php?$1
 
 </IfModule>

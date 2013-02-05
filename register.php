@@ -40,6 +40,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         echo json_encode(array('status'=>'inconsistent'));
         exit;
     }
+	if ( $pluginid[0] == '.' ) {
+		echo json_encode(array('status'=>'dot'));
+		exit;
+	}
     if ( !$pluginid || (empty($PLUGIN_ID) && (!$password || !$password2)) || !$email || !$url ) {
         echo json_encode(array('status'=>'missing'));
         exit;
@@ -52,6 +56,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         echo json_encode(array('status'=>'exists'));
         exit;
     }
+	if ( empty($PLUGIN_ID) && file_exists("data/.$pluginid") ) {
+		echo json_encode(array('status'=>'existsInactive'));
+		exit;
+	}
     if ( !empty($password) ) {
         $PLUGIN['password'] = md5($password);
     }
@@ -62,6 +70,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         echo json_encode(array('status'=>'unsaved'));
         exit;
     }
-	mail('federico@moodsdesign.com','New plugin in Versions Server','From: "Versions Server" <info@moodsdesign.com>');
+	mail('federico@moodsdesign.com','New plugin in Versions Server',"A new plugin called '$pluginid' has been created on Versions Server.", 'From: "Versions Server" <www-data@fedmest.com>');
     echo json_encode(array('status'=>empty($PLUGIN_ID)?'created':'saved'));
 }

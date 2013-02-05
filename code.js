@@ -57,6 +57,12 @@ function profileSaveSuccess(data, status, obj) {
         case 'exists':
             msg = 'Sorry, but this Plugin ID is already registered.';
             break;
+        case 'existsInactive':
+            msg = 'Sorry, but this Plugin ID is already registered, although it has not been activated yet.';
+            break;
+        case 'dot':
+            msg = 'Plugin IDs cannot start with a dot.';
+            break;
         case 'unsaved':
             msg = 'Could not save your data into the database.';
             break;

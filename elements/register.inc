@@ -14,7 +14,7 @@
     </div>
     <div class="modal-body">
         <div class="alert alert-success" id="serverRegisterSuccessAlert">
-            <strong>All good!</strong> <?php echo empty($PLUGIN_ID) ? 'Your new Plugin ID was registered successfully' : 'Your Plugin profile was saved successfully'; ?>.
+            <strong>All good!</strong> <?php echo empty($PLUGIN_ID) ? 'Your new Plugin ID was registered successfully. Now wait for the activation email before you try and login to the Versions Server.' : 'Your Plugin profile was saved successfully'; ?>.
         </div>
         <div class="alert" id="serverRegisterErrorAlert">
             <strong>Warning!</strong> An error occurred on the server, please try again later.

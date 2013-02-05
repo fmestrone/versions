@@ -51,6 +51,10 @@ if ( ($pluginid = $_SERVER['QUERY_STRING']) ) {
     $password = $_POST['password'];
     if ( !$pluginid || !$password ) {
         $error_message = '<li>You must provide both your Plugin ID and a password for it</li>';
+    } else if ( $pluginid[0] == '.' ) {
+	    $warn_message = 'Plugin IDs cannot start with a dot.';
+    } else if ( is_readable("data/.$pluginid") ) {
+	    $warn_message = 'This Plugin ID exists but has not been activated yet.';
     } else {
         $filename = "data/$pluginid";
         if ( is_readable($filename) ) {

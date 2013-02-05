@@ -83,7 +83,7 @@ function contextualTime($small_ts, $large_ts = false) {
             $found = false;
             if ( $handle = opendir('data') ) {
                 while ( false !== ($entry = readdir($handle)) ) {
-                    if ( $entry != '.' && $entry != '.' && is_file("data/$entry") && is_readable("data/$entry") ) {
+                    if ( $entry[0] != '.' && is_file("data/$entry") && is_readable("data/$entry") ) {
                         $raw = file_get_contents("data/$entry");
                         if ( ($data = unserialize($raw)) ) {
                             if ( !$found ) {

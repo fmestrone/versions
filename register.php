@@ -58,9 +58,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     $PLUGIN['plugin_email'] = $email;
     $PLUGIN['plugin_url'] = $url;
     $raw = serialize($PLUGIN);
-    if ( !file_put_contents("data/$pluginid", $raw) ) {
+    if ( !file_put_contents("data/.$pluginid", $raw) ) {
         echo json_encode(array('status'=>'unsaved'));
         exit;
     }
+	mail('federico@moodsdesign.com','New plugin in Versions Server','From: "Versions Server" <info@moodsdesign.com>');
     echo json_encode(array('status'=>empty($PLUGIN_ID)?'created':'saved'));
 }
